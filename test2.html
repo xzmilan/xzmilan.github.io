@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-    <link type="text/css" rel="stylesheet" href="http://xzmilan.github.io/d3test/style.css"/>
+    <link type="text/css" rel="stylesheet" href="style.css"/>
     <style type="text/css">
 
 text {
@@ -64,7 +64,7 @@ var vis = d3.select("body").insert("svg:svg", "h2")
   .append("svg:g")
     .attr("transform", "translate(" + (w - r) / 2 + "," + (h - r) / 2 + ")");
 
-d3.json("d3test/flare2.json", function(data) {
+d3.json("flare2.json", function(data) {
   node = root = data;
 
   var nodes = pack.nodes(root);
