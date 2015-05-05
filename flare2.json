@@ -1,20 +1,10 @@
-{ 
- "name": ,
+{
+"name": "Farm Servers",
  "children": [
-  { "name": "Retail Clients","size": 1},
-    "children" :  [{ "name": "Farm Servers","size": 1}]
-      "children" :  [{ "name": "Applications","size": 49}]
-
-{ "name": "HealthCare Clients","size": 3},
-    "children" :  [{ "name": "Farm Servers","size": 695}]
-      "children" :  [{ "name": "Applications","size": 85}]
-
-{ "name": "Technology Service Provider","size": 5},
-   "children" :  [{ "name": "Farm Servers","size": 77}]
-     "children" :  [{ "name": "Applications","size": 109}]
-
-{ "name": "Mgmt Consultant Clients","size": 1},
-   "children" :  [{ "name": "Farm Servers","size": 1}]
-     "children" :  [{ "name": "Applications","size": 2}]
-]
+  {"name": "Retail","size": 543},
+  {"name": "HealthCare","size": 10},
+  {"name": "Technology Service Provider","size": 46},
+  {"name": "Management Consulting","size": 100}
+ ]
 }
+ 
