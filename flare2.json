@@ -2,7 +2,5 @@
  "name": "test" ,
  "children": [
   { "name": "Retail Clients","size": 1}
-    "children":  [{ "name": "Farm Servers","size": 1}]
-      "children":  [{ "name": "Applications","size": 49}]
 ]
 }
