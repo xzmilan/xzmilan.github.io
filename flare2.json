@@ -1,6 +1,6 @@
 { 
  "name": "test" ,
  "children": [
-  { "name": "Retail Clients","size": 1}
+  { "name": "Retail Clients","size": 55}
 ]
 }
