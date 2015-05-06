@@ -83,25 +83,12 @@ d3.json("d3test/flare2.json", function(data) {
       .attr("cy", function(d) { return d.y; })
       .attr("r", function(d) { return d.r; })
       .on("click", function(d) { return zoom(node == d ? root : d); });
-var updateCounter = 0;
+
 
   vis.selectAll("text")
       .data(nodes)
     .enter().append("svg:text")
-     //added    t.selectAll("text")
-            .style("opacity", 0)
-            .attr("x", function(d) { return x(d.x); })
-            .attr("y", function(d) { return y(d.y); })
-            .each(function(d, i) {
-                updateCounter++;
-            })
-            .each("end", function(d, i) {
-                updateCounter--;
-                if (updateCounter > 1) {
-                    adjustLabels(k);
-                }
-            })
-//end of edit SP
+    
       .attr("class", function(d) { return d.children ? "parent" : "child"; })
       .attr("x", function(d) { return d.x; })
       .attr("y", function(d) { return d.y; })
