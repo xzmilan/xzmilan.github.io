@@ -92,7 +92,7 @@ d3.json("d3test/flare2.json", function(data) {
       .attr("y", function(d) { return d.y; })
       .attr("dy", ".35em")
       .attr("text-anchor", "top")
-      .style("opacity", function(d) { return d.r > 2 ? 1 : 0; })
+      .style("opacity", function(d) { return d.r > 20 ? 1 : 0; })
       .text(function(d) { return d.name; });
 
   d3.select(window).on("click", function() { zoom(root); });
@@ -110,16 +110,59 @@ function zoom(d, i) {
       .attr("cx", function(d) { return x(d.x); })
       .attr("cy", function(d) { return y(d.y); })
       .attr("r", function(d) { return k * d.r; });
+//beginning of edit sp
+// updateCounter is a hacky way to determine when transition is finished https://gist.github.com/billdwhite/7207695
+var updateCounter = 0;
 
-  t.selectAll("text")
-      .attr("x", function(d) { return x(d.x); })
-      .attr("y", function(d) { return y(d.y); })
-      .style("opacity", function(d) { return k * d.r > 20 ? 1 : 0; });
+    t.selectAll("text")
+            .style("opacity", 0)
+            .attr("x", function(d) { return x(d.x); })
+            .attr("y", function(d) { return y(d.y); })
+            .each(function(d, i) {
+                updateCounter++;
+            })
+            .each("end", function(d, i) {
+                updateCounter--;
+                if (updateCounter == 0) {
+                    adjustLabels(k);
+                }
+            });
+//end of edit SP
 
   node = d;
   d3.event.stopPropagation();
 }
 
+//additional edit SP
+function adjustLabels(k) {
+        vis.selectAll("text")
+            .style("opacity", function(d) {
+                return k * d.r > 20 ? 1 : 0;
+            })
+            .text(function(d) {
+                return d.name;
+            })
+            .filter(function(d) {
+                d.tw = this.getComputedTextLength();
+                return (Math.PI*(k*d.r)/2) < d.tw;
+            })
+            .each(function(d) {
+                var proposedLabel = d.name;
+                var proposedLabelArray = proposedLabel.split('');
+                while ((d.tw > (Math.PI*(k*d.r)/2) && proposedLabelArray.length)) {
+                    // pull out 3 chars at a time to speed things up (one at a time is too slow)
+                    proposedLabelArray.pop();proposedLabelArray.pop(); proposedLabelArray.pop();
+                    if (proposedLabelArray.length===0) {
+                        proposedLabel = "";
+                    } else {
+                        proposedLabel = proposedLabelArray.join('') + "..."; // manually truncate with ellipsis
+                    }
+                    d3.select(this).text(proposedLabel);
+                    d.tw = this.getComputedTextLength();
+                }
+            });
+    }
+    //additional edit SP END
     </script>
   </body>
 </html>
