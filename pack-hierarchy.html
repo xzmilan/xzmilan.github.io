@@ -17,7 +17,7 @@ text.child {
 text.parent {
   fill: #B8B8B8;
   font-size: 12px;
-  text-align: left;
+  
 }
 
 circle {
@@ -92,6 +92,7 @@ d3.json("d3test/flare2.json", function(data) {
       .attr("y", function(d) { return d.y; })
       .attr("dy", ".35em")
       .attr("text-anchor", "start")
+      .attr("alignment-baseline="middle", "text-before-edge")
       .style("opacity", function(d) { return d.r > 20 ? 1 : 0; })
       .text(function(d) { return d.name; });
 
