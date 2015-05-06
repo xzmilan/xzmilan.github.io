@@ -83,6 +83,7 @@ d3.json("d3test/flare2.json", function(data) {
       .attr("cy", function(d) { return d.y; })
       .attr("r", function(d) { return d.r; })
       .on("click", function(d) { return zoom(node == d ? root : d); });
+var updateCounter = 0;
 
   vis.selectAll("text")
       .data(nodes)
@@ -127,7 +128,7 @@ function zoom(d, i) {
       .attr("r", function(d) { return k * d.r; });
 //beginning of edit sp
 // updateCounter is a hacky way to determine when transition is finished https://gist.github.com/billdwhite/7207695
-var updateCounter = 0;
+
 
 
 
