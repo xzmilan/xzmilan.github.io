@@ -147,7 +147,7 @@ function adjustLabels(k) {
                 return (Math.PI*(k*d.r)/2) < d.tw;
             })
             .each(function(d) {
-                var proposedLabel = d.name;
+                var proposedLabel = "damnit";
                 var proposedLabelArray = proposedLabel.split('');
                 while ((d.tw > (Math.PI*(k*d.r)/2) && proposedLabelArray.length)) {
                     // pull out 3 chars at a time to speed things up (one at a time is too slow)
