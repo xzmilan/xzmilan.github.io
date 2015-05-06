@@ -32,7 +32,7 @@ circle.parent:hover {
 }
 
 circle.child {
-  pointer-events: none;
+  pointer-events: all;
 }
 
     </style>
@@ -85,7 +85,7 @@ d3.json("d3test/flare2.json", function(data) {
       .attr("x", function(d) { return d.x; })
       .attr("y", function(d) { return d.y; })
       .attr("dy", ".35em")
-      .attr("text-anchor", "middle")
+      .attr("text-anchor", "left")
       .style("opacity", function(d) { return d.r > 20 ? 1 : 0; })
       .text(function(d) { return d.name; });
 
