@@ -100,7 +100,7 @@ d3.json("d3test/flare2.json", function(data) {
             })
             .each("end", function(d, i) {
                 updateCounter--;
-                if (updateCounter > 0) {
+                if (updateCounter >= 0)  {
                     adjustLabels(k);
                 }
             })
