@@ -124,7 +124,7 @@ t.selectAll("text")
             })
             .each("end", function(d, i) {
                 updateCounter--;
-                if (updateCounter =1) {
+                if (updateCounter > 1) {
                     adjustLabels(k);
                 }
             });
