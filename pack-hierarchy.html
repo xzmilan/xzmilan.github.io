@@ -92,7 +92,7 @@ d3.json("d3test/flare2.json", function(data) {
       .attr("y", function(d) { return d.y; })
       .attr("dy", ".35em")
       .attr("text-anchor", "top")
-      .style("opacity", function(d) { return d.r > 20 ? 1 : 0; })
+      .style("opacity", function(d) { return d.r > 20 ? 0 : 0; })
       .text(function(d) { return d.name; });
 
   d3.select(window).on("click", function() { zoom(root); });
