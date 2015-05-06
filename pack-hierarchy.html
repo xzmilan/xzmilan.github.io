@@ -92,18 +92,7 @@ d3.json("d3test/flare2.json", function(data) {
       .attr("y", function(d) { return d.y; })
       .attr("dy", ".35em")
       .attr("text-anchor", "top")
-                .style("opacity", 0)
-            .attr("x", function(d) { return x(d.x); })
-            .attr("y", function(d) { return y(d.y); })
-            .each(function(d, i) {
-                updateCounter++;
-            })
-            .each("end", function(d, i) {
-                updateCounter--;
-                if (updateCounter >= 1)  {
-                    adjustLabels(k);
-                }
-            })
+               
       .style("opacity", function(d) { return d.r > 20 ? 1 : 0; })
       .text(function(d) { return d.name; });
 
