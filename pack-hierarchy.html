@@ -11,14 +11,11 @@ text {
 }
 text.parent
 {
-  font-size: 20px;
+  font-size: 12px;
   pointer-events: none;
 }
 
-text.child  {
-  fill: #B8B8B8;
-  font-size: 12px;
-  margin-top:10px;
+
   
 }
 
@@ -125,7 +122,7 @@ var updateCounter = 0;
             })
             .each("end", function(d, i) {
                 updateCounter--;
-                if (updateCounter == 0) {
+                if (updateCounter > 0) {
                     adjustLabels(k);
                 }
             });
