@@ -97,20 +97,7 @@ d3.json("d3test/flare2.json", function(data) {
 
   d3.select(window).on("click", function() { zoom(root); });
 });
-t.selectAll("text")
-            .style("opacity", 0)
-            .attr("x", function(d) { return x(d.x); })
-            .attr("y", function(d) { return y(d.y); })
-            .each(function(d, i) {
-                updateCounter++;
-            })
-            .each("end", function(d, i) {
-                updateCounter--;
-                if (updateCounter > 0) {
-                    adjustLabels(k);
-                }
-            });
-//end of edit SP
+
 function zoom(d, i) {
   var k = r / d.r / 2;
   x.domain([d.x - d.r, d.x + d.r]);
@@ -126,6 +113,21 @@ function zoom(d, i) {
 //beginning of edit sp
 // updateCounter is a hacky way to determine when transition is finished https://gist.github.com/billdwhite/7207695
 var updateCounter = 0;
+
+t.selectAll("text")
+            .style("opacity", 0)
+            .attr("x", function(d) { return x(d.x); })
+            .attr("y", function(d) { return y(d.y); })
+            .each(function(d, i) {
+                updateCounter++;
+            })
+            .each("end", function(d, i) {
+                updateCounter--;
+                if (updateCounter > 0) {
+                    adjustLabels(k);
+                }
+            });
+//end of edit SP
 
     
 
@@ -147,7 +149,7 @@ function adjustLabels(k) {
                 return (Math.PI*(k*d.r)/2) < d.tw;
             })
             .each(function(d) {
-                var proposedLabel = "damnit";
+                var proposedLabel = "Click";
                 var proposedLabelArray = proposedLabel.split('');
                 while ((d.tw > (Math.PI*(k*d.r)/2) && proposedLabelArray.length)) {
                     // pull out 3 chars at a time to speed things up (one at a time is too slow)
